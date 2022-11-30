@@ -1,16 +1,13 @@
 //1 - invocamos a express
 const express = require('express');
-const dotenv = require('dotenv')
 const app = express(); //constante app para utilizar los metodos de la libreria
-//const cookieParser = require ('cookie-parser')
-//const controller = require('./controllers/authcontroller')
-
 
 //2 - seteamos urlencoded para capturar datos del formulario
 app.use(express.urlencoded({extended:false}));
 app.use(express.json())
 
 //3 - invocamos a dotenv para las variables de entorno
+const dotenv = require('dotenv')
 dotenv.config({path:'./env/.env'})
 
 //4- seteamos el directorio public
@@ -35,9 +32,7 @@ app.use(session({
 //8- Llamado a la base de datos
 const conexion = require('./database/db')
 
-
 //9- rutas para las vistas
-
 app.get('/login',(req,res)=>{
     res.render('login')
 })
@@ -71,8 +66,7 @@ app.post('/register',async (req,res)=>{
 
             })
         }
-    })   
-    
+    })       
 })
 
 //11-autenticacion
@@ -121,7 +115,6 @@ app.post('/auth', async(req,res)=>{
     }
 })
 
-
 //12- Auth page
 app.get('/',(req,res)=>{
     if (req.session.loggedin){
@@ -144,9 +137,6 @@ app.get('/logout',(req,res)=>{
         res.redirect('/')
     })
 })
-/*// invocamos al router  
-app.use('/',require('./routes/router'))*/
-
 
 //seteamos el port del servidor
 app.listen(3000,(req,res)=>{

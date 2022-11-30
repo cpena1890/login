@@ -9,14 +9,7 @@ const pool = new Pool({
     host: process.env.DB_HOST ,
     database: process.env.DB_DATABASE,
     password: process.env.DB_PASSWORD,        
-    port: 5432,
-    
-    
-    /*user: 'carlos' ,
-    host: 'localhost' ,
-    database: 'usuarios',
-    password: '1890',
-    port: 5432,*/
+    port: 5432, 
 })
 
 //conexion a la base de datos
